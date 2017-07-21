@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+
+<body> 
+
+
+
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+	<ui:define name="title"> Anasayfa </ui:define>
+<ui:define name="content">
+
+<f:view>
+ <br />
+  <br />
+   <br />
+    <br />
+     <br />
+      <br />
+<h:form>
+ 
+<div id="cerceve-icerik" align="center">
+	 <br />
+  <br />
+   <br />
+    <br />
+     <br />
+      <br />
+	<div id="kayit" align="center" >
+      KAYIT OL
+       <br />
+        <br />
+<h:panelGrid columns="2" >
+Ad : <p:inputText  value="#{kullaniciBean.kullanicikaydet.kullanici.ad}" />
+Soyad : <p:inputText value="#{kullaniciBean.kullanicikaydet.kullanici.soyad}" />
+Telefon : <p:inputText value="#{kullaniciBean.kullanicikaydet.kullanici.telefon}" />
+Kullanıcı Adı : <p:inputText value="#{kullaniciBean.kullanicikaydet.kullanici.kullanici_Adi}" />
+Parola : <p:inputText value="#{kullaniciBean.kullanicikaydet.kullanici.parola}" />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <p:commandButton action="#{kullaniciBean.kullanicikaydet.kaydet()}" value="Kaydet"/>
+
+</h:panelGrid>
+</div>
+
+
+<div id="giris-kayit" align="center">
+
+       GİRİŞ YAP
+        <br />
+         <br />
+<h:panelGrid columns="2" header="Merhaba">
+Kullanıcı Adı : <p:inputText value="#{kullaniciBean.giris.kullaniciadi}" />
+Parola : <p:inputText value="#{kullaniciBean.giris.parola}" />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<p:commandButton action="#{kullaniciBean.giris.girisYap()}" value="Giriş Yap" />
+
+</h:panelGrid>
+</div>
+</div>
+</h:form>
+</f:view>
+
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+</ui:define>
+
+
+</ui:composition>
+</body> 
+</html>

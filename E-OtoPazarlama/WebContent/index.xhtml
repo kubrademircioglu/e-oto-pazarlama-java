@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:x_rt="http://java.sun.com/jstl/xml_rt"
+      xmlns:c_rt="http://java.sun.com/jstl/core_rt"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+	<ui:define name="title"> Anasayfa </ui:define>
+<ui:define name="content">
+
+
+	<f:view>
+	
+<h:form rendered="false">
+
+			<div id="search" >
+			
+			<h:panelGrid columns="2">
+			<h:panelGrid columns="2">
+			
+							<p:outputLabel for="marka" value="Marka: " />
+							<p:selectOneMenu id="marka"
+								value="#{ılanBean.ilanIslemleri.marka_Adi}" style="width:200px">
+								<p:ajax listener="#{ılanBean.ilanIslemleri.onMarkaChange}"
+									update="seri" />
+								<f:selectItem itemLabel="Marka Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.markaIslemleri.listMarka}"
+									var="mrk" itemLabel="#{mrk.marka_Adi}"
+									itemValue="#{mrk.marka_Adi}" />
+							</p:selectOneMenu>
+		
+							<p:outputLabel for="seri" value="Seri: " />
+							<p:selectOneMenu id="seri"
+								value="#{ılanBean.ilanIslemleri.seri_Adi}" style="width:200px">
+								<f:selectItem itemLabel="Seriyi Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.ilanIslemleri.seriListesi}"
+									var="seri" itemLabel="#{seri.seri_Adi}"
+									itemValue="#{seri.seri_Adi}" />
+							</p:selectOneMenu>
+			
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2" >
+		<p:outputLabel  value="Fiyat Max:"/>	
+		 
+		  <p:spinner   min="0" stepFactor="1000" />
+           
+            
+          
+			
+	<h:outputLabel  value="KM Max: " />
+        <p:spinner value="" min="0" stepFactor="1000"  />
+ 
+         	  
+			
+			</h:panelGrid>
+			
+			
+			
+			</h:panelGrid>
+		
+			
+			</div>
+
+
+
+
+		</h:form>
+	
+		
+
+		
+	
+		
+		<h:form id="form">
+    <p:dataGrid var="ilan" value="#{ılanBean.ilanIslemleri.listIlanlar}" columns="3" layout="grid"
+        rows="6" paginator="true" id="cars"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Satılık Araçlar
+        </f:facet>
+ 		<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+        <p:panel header="#{ilan.basklik}" style="text-align:center;width:310px;margin:0px 0px" >
+            
+            
+            <p:panelGrid columns="2" style="width:100%;margin:3px 0px"
+					columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+			
+					<f:facet name="header">
+						<h:graphicImage library="images" name="#{ılanBean.resimIslemleri.resimGetir(ilan)}" width="250px" height="170px"/>
+					</f:facet>
+
+					<h:outputText value="Marka" />
+					<h:outputText value="#{ilan.marka.marka_Adi}" />
+
+					<h:outputText value="Seri" />
+					<h:outputText value="#{ilan.seri.seri_Adi}" />
+
+					<h:outputText value="Kilometresi" />
+					<h:outputText value="#{ilan.KM}" />
+
+					<h:outputText value="Fiyat" />
+					<h:outputText value="#{ilan.ilan_Fiyati} TL" />
+
+					<f:facet name="footer">
+						<p:commandButton action="IlanBilgisi.xhtml?faces-redirect=true" value="İncele">
+							<f:setPropertyActionListener value="#{ilan}"
+								target="#{ılanBean.arac}" />
+						</p:commandButton>
+					</f:facet>
+				</p:panelGrid>
+            
+            
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+   
+</h:form>
+		
+		
+		
+	</f:view>
+
+
+<br></br>
+</ui:define>
+
+
+</ui:composition>
+
+
+
+</body> 
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+	<ui:define name="title"> Anasayfa </ui:define>
+<ui:define name="content">
+
+			<f:view>
+
+
+<div id="cerceve-icerik-kullanici">
+
+
+
+<h:form id="form">
+             
+    <p:growl id="msgs" showDetail="true" />
+ <p:growl id="growl" showDetail="true" />
+ 
+    <p:tabView orientation="left" >
+        <p:tab title="Bilgilerim" >
+           
+           <div id="kullanici-ozellik">
+					
+							<h:outputText value="Kullanıcı Adı:  " />
+							
+							<h:outputText value="#{kullaniciBean.giris.kullaniciadi}" />
+							<br></br>
+							<br></br>
+							<h:panelGrid columns="2">
+
+Ad : <p:inputText value="#{kullaniciBean.giris.kullaniciBilgisi().ad}"
+									 />
+Soyad : <p:inputText
+									value="#{kullaniciBean.giris.kullaniciBilgisi().soyad}"
+									 />
+Telefon : <p:inputText
+									value="#{kullaniciBean.giris.kullaniciBilgisi().telefon}"
+									/>
+Kullanıcı Adı : <p:inputText
+									value="#{kullaniciBean.giris.kullaniciBilgisi().kullanici_Adi}"
+									readonly="true" />
+									<h:outputText value=" " />
+									<p:commandButton value="Güncelle" ></p:commandButton>
+							</h:panelGrid>
+						</div>
+           
+           
+        </p:tab>
+        
+        
+        
+        
+        
+        
+        <p:tab title="Araçlarım">
+            
+            	<div id="tabmenu">
+					<p:dataTable var="ilan" style="font-size: 11px; font-weight=bold; "  resizableColumns="true" 
+						value="#{ılanBean.ilanIslemleri.getListKullaniciIlanlari(kullaniciBean.giris.kullaniciBilgisi())}">
+
+						<f:facet name="header">
+            Satılık Araçlarım
+        </f:facet>
+
+<p:column>
+<h:commandLink action="#{ılanBean.ilanIslemleri.sil()}" value="Sil" >
+			<f:setPropertyActionListener target="#{ılanBean.arac}" value="#{ilan}" />
+			</h:commandLink>
+</p:column>
+<p:column>
+		
+			<h:commandLink value="Duzenle" action="IlanGuncelle.xhtml?faces-redirect=true" >
+			<f:setPropertyActionListener target="#{ılanBean.ilanIslemleri.ilanduzenle}" value="#{ilan}" />
+			</h:commandLink>
+		</p:column>
+						<p:column headerText="Resim">
+							  <h:graphicImage library="images"  name="#{ılanBean.resimIslemleri.resimGetir(ilan)}" width="100px" height="50px"/>
+						</p:column>
+
+						<p:column headerText="Marka">
+							<h:outputText value="#{ilan.marka.marka_Adi}" />
+						</p:column>
+
+						<p:column headerText="Seri">
+							<h:outputText value="#{ilan.seri.seri_Adi}" />
+						</p:column>
+
+						<p:column headerText="İlan Başlık">
+							<h:outputText value="#{ilan.basklik}" />
+						</p:column>
+
+
+						<p:column headerText="Fiyat">
+							<h:outputText value="#{ilan.ilan_Fiyati} TL" />
+						</p:column>
+
+						<p:column>
+							<p:commandButton action="IlanBilgisi.xhtml" value="İncele">
+								<f:setPropertyActionListener value="#{ilan}"
+									target="#{ılanBean.ilanIslemleri.ilan}" />
+							</p:commandButton>
+						</p:column>
+
+
+
+
+					</p:dataTable>
+            
+            </div>
+        </p:tab>
+        
+        
+        
+        
+        
+        <p:tab title="Alınan Mesajlar" >
+        	<div id="tabmenu">
+					<p:dataTable var="mesaj" style="font-size: 11px; font-weight=bold; " 
+						value="#{kullaniciBean.mesajislemleri.getLisMesajlarim(kullaniciBean.giris.kullanici)}">
+
+						<f:facet name="header">
+          Alınan Mesajlar
+        </f:facet>
+
+<p:column>
+<h:commandLink action="#{kullaniciBean.mesajislemleri.sil()}" value="Sil" >
+			<f:setPropertyActionListener target="#{kullaniciBean.mesajislemleri.mesaj}" value="#{mesaj}" />
+			</h:commandLink>
+</p:column>				
+					<p:column headerText="Gönderen">
+							<h:outputText value="#{mesaj.gonderici.kullanici_Adi}" />
+						</p:column>
+
+						<p:column headerText="İçerik">
+							<h:outputText value="#{mesaj.mesajIcerik}" />
+						</p:column>
+						<p:column>
+						<p:growl id="message" showDetail="true" />
+ 
+   <p:commandButton value="Yanıtla" action="MesajYanitla.xhtml?faces-redirect=true" update="message">
+   <f:setPropertyActionListener value="#{mesaj}"
+								target="#{kullaniciBean.mesajislemleri.yanitlar}" />
+							</p:commandButton>
+							 
+    
+							
+							
+							
+							
+						</p:column>
+					</p:dataTable>           
+            </div>
+      </p:tab>
+      
+      <p:tab title="Gonderilen Mesajlar" >
+        	<div id="tabmenu">
+					<p:dataTable var="mesaj" style="font-size: 11px; font-weight=bold; " 
+						value="#{kullaniciBean.mesajislemleri.getLisGelenMesajlar(kullaniciBean.giris.kullanici)}">
+
+						<f:facet name="header">
+          Gönderilen Mesajlar
+        </f:facet>
+
+<p:column>
+<h:commandLink action="#{kullaniciBean.mesajislemleri.sil()}" value="Sil" >
+			<f:setPropertyActionListener target="#{kullaniciBean.mesajislemleri.mesaj}" value="#{mesaj}" />
+			</h:commandLink>
+</p:column>				
+					<p:column headerText="Gönderilen">
+							<h:outputText value="#{mesaj.alici.kullanici_Adi}" />
+						</p:column>
+
+						<p:column headerText="İçerik">
+							<h:outputText value="#{mesaj.mesajIcerik}" />
+						</p:column>
+						
+					</p:dataTable>           
+            </div>
+      </p:tab>
+    
+    
+    
+                    
+  <p:tab title="Çıkış"  >
+           
+           <div id="kullanici-ozellik">
+				
+							<p:commandButton action="OzellikleriDoldur.xhtml?faces-redirect=true" value="Ozellikleri Gir" rendered="#{kullaniciBean.giris.kullanici.kullaniciTuru}">
+								
+							</p:commandButton>
+							<br />
+								<p:commandButton action="#{kullaniciBean.cikisYap()}" value="Oturumu Kapat" actionListener="#{dfView.showMessage('Oturum Kapatma','Başarılı')}">
+								
+							</p:commandButton>
+							
+						</div>
+           
+           
+        </p:tab>
+                    
+                    
+    </p:tabView>
+</h:form>
+
+
+</div>
+
+
+
+				<h:form>
+					
+
+				</h:form>
+
+			</f:view>
+
+
+		
+
+<br></br>
+</ui:define>
+
+</ui:composition>
+
+
+</body>
+</html>

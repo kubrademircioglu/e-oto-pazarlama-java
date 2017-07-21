@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+
+
+#cerceve-icerik{
+	padding-top:100px;
+	width:1000px;
+	height:300px;
+
+
+ 
+}
+#giris-kayit{
+		padding-top:50px;
+	color:#ffe8e8;
+	
+	width:498px;
+	height:300px;
+	background-color:#404040;
+	float:left;
+ font-family: sans-serif;
+	font-size: 10;
+ font-weight: bold;
+}
+
+
+
+#cerceve-icerik-ilan{
+	padding-top:0px;
+	width:1000px;
+	height:550px;
+
+ color:#ffe8e8;
+ 
+}
+#cerceve-icerik-kullanici{
+	padding-top:200px;
+	width:1000px;
+	height:auto;
+padding-bottom: 20px;
+
+
+ 
+}
+
+
+#ilan-ozellik{
+	
+	width:500px;
+	height:500px;
+	float:left;
+ font-family: sans-serif;
+  color:#ffe8e8;
+	font-size: 12;
+ font-weight: bold;
+ padding-left: 20px;
+}
+
+#ilan-ozellik-2{
+	 color:#ffe8e8;
+	width:460px;
+	height:500px;
+	float:left;
+ font-family: sans-serif;
+	font-size: 12;
+ font-weight: bold;
+}
+
+#kullanici-ozellik{
+	width:450px;
+	height:250px;
+
+ font-family: sans-serif;
+	font-size: 12;
+ font-weight: bold;
+}
+#tabmenu{
+	
+
+ font-family: sans-serif;
+	font-size: 5 !important;
+ font-weight: bold;
+}
+
+
+
+#search{
+
+width:1000px;
+height:auto;
+
+background-color: #2d8fab;
+ font-family: sans-serif;
+	font-size: 10px;
+ font-weight: bold;
+ 
+}

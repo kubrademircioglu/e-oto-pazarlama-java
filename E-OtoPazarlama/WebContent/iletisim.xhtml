@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:x_rt="http://java.sun.com/jstl/xml_rt"
+	xmlns:c_rt="http://java.sun.com/jstl/core_rt"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/template/TemplateSayfasi.xhtml">
+		<ui:define name="title"> satilikoto.com | İletişim </ui:define>
+		<ui:define name="content">
+İletişim
+<p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID"
+				style="width:100%;height:10px" />
+
+			<div id="ilan">
+
+				<h:form>
+					<h:outputText value="#{session.lastAccessedTime}">
+						<f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+					</h:outputText>
+					<br/>
+					<br/>
+					<p:outputLabel value="İLETİŞİM BİLGİLERİ" style="color:red"/>
+
+
+
+					<h:panelGrid columns="1" width="410px">
+
+						<p:panelGrid columns="2">
+				Her türlü önerileriniz için: 
+				
+				 <p:inputTextarea
+								value="444 9 628 nolu Müşteri İlişkileri Hattımız hafta içi her gün 08.00-17.00 saatleri arasında hizmetinizdedir. 
+İletişim formu ile öneri ve yorumlarınızı bize ulaştırabilirsiniz"
+								style="width:800px;height:50px" />					
+				Adres: 				
+				 <p:inputTextarea
+								value="Aydınevler Mahallesi Saygı Caddesi No: 60 Küçükyalı/ İstanbul"
+								style="width:800px;height:50px" />							
+				Mail atmak için tıklayınız :
+<h:outputLink value="https://login.live.com/">OUTLOOK</h:outputLink>
+
+						</p:panelGrid>
+
+
+
+						
+
+					</h:panelGrid>
+				</h:form>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

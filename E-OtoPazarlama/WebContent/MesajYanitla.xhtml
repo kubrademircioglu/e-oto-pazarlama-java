@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+		<ui:define name="title"> Anasayfa </ui:define>
+		<ui:define name="content">
+<f:view>
+
+				<div id="cerceve-icerik-ilan">
+					<h:form >
+					
+					<div id="kayit">
+
+
+<h:panelGrid columns="2">
+<h:outputText  value="Gelen:" />
+<h:outputText value="#{kullaniciBean.mesajislemleri.yanitlar.gonderici.kullanici_Adi}" />
+</h:panelGrid>
+
+
+
+<h:panelGrid columns="1">
+<h:outputText  value="Mesaj:  " />
+<p:inputTextarea value="#{kullaniciBean.mesajislemleri.yanitlar.mesajIcerik}" style="width:550px; " readonly="true" />
+</h:panelGrid>
+
+<h:panelGrid columns="1">
+<br />
+<br />
+
+<p:outputLabel value="Yanıtla :" />
+<p:inputTextarea value="#{kullaniciBean.mesajislemleri.yanit}" style="width:550px " />
+</h:panelGrid>
+
+<p:commandButton action="#{kullaniciBean.mesajislemleri.mesajKaydet(kullaniciBean.mesajislemleri.yanitlar.gonderici.kullanici_Adi,kullaniciBean.mesajislemleri.yanitlar.alici.kullanici_Adi,kullaniciBean.mesajislemleri.yanit)}" value="Yanıtla"></p:commandButton>
+</div>
+
+
+					
+					</h:form>
+					
+</div>
+
+</f:view>
+
+
+
+</ui:define>
+	</ui:composition>
+</body> 
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	xmlns:t="http://myfaces.apache.org/tomahawk"> 
+
+<h:head>
+	<script type="text/javascript">
+function kayitYapildi()
+{alert(document.getElementById('from:inputHP').value);
+	}
+
+</script>
+</h:head> 
+<body> 
+
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+		<ui:define name="title"> Anasayfa </ui:define>
+		<ui:define name="content">
+
+			<f:view>
+
+				<div id="ilan">
+					<h:form id="ilanekle" enctype="multipart/form-data">
+						<h:inputHidden id="inputHP" value="Kayıt Yapıldı" />
+						<h:panelGrid columns="4" width="1000px;">
+
+							<p:outputLabel value="KullaniciAdi" />
+							<p:outputLabel value="#{ılanBean.ilanIslemleri.kullaniciAdiGetir( kullaniciBean.giris.kullaniciadi)}" />
+
+
+							<p:outputLabel value="Model Yılı :" />
+							<p:inputText value="#{ılanBean.ilanIslemleri.ilanduzenle.model_Yili}" />
+
+
+
+
+							<p:outputLabel for="marka" value="Marka: " />
+							<p:selectOneMenu id="marka"
+								value="#{ılanBean.ilanIslemleri.marka_Adi}" style="width:225px">
+								<p:ajax listener="#{ılanBean.ilanIslemleri.onMarkaChange}"
+									update="seri" />
+								<f:selectItem itemLabel="Marka Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.markaIslemleri.listMarka}"
+									var="mrk" itemLabel="#{mrk.marka_Adi}"
+									itemValue="#{mrk.marka_Adi}" />
+							</p:selectOneMenu>
+
+
+
+							<p:outputLabel value="Fiyat" />
+							<p:inputText value="#{ılanBean.ilanIslemleri.ilanduzenle.ilan_Fiyati}" />
+
+
+
+							<p:outputLabel for="seri" value="Seri: " />
+							<p:selectOneMenu id="seri"
+								value="#{ılanBean.ilanIslemleri.seri_Adi}" style="width:225px">
+								<f:selectItem itemLabel="Seriyi Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.ilanIslemleri.seriListesi}"
+									var="seri" itemLabel="#{seri.seri_Adi}"
+									itemValue="#{seri.seri_Adi}" />
+							</p:selectOneMenu>
+
+
+
+							<p:outputLabel value="Durum :" />
+							<p:inputText value="#{ılanBean.ilanIslemleri.ilanduzenle.durum}" />
+
+
+
+							<p:outputLabel for="yakit" value="Yakit: " />
+							<p:selectOneMenu id="yakit"
+								value="#{ılanBean.ilanIslemleri.yakit_Adi}" style="width:225px">
+								<f:selectItem itemLabel="Yakit Turu Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.yakitIslemleri.listYakit}"
+									var="ykt" itemLabel="#{ykt.yakit_Turu}"
+									itemValue="#{ykt.yakit_Turu}" />
+							</p:selectOneMenu>
+
+
+
+							<p:outputLabel value="Kilometresi :" />
+							<p:inputText value="#{ılanBean.ilanIslemleri.ilanduzenle.KM}" />
+
+
+							<p:outputLabel for="renk" value="Renk: " />
+							<p:selectOneMenu id="renk"
+								value="#{ılanBean.ilanIslemleri.renk_Adi}" style="width:225px">
+								<f:selectItem itemLabel="Renk Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.renkIslemleri.listRenk}"
+									var="rnk" itemLabel="#{rnk.renk_Adi}"
+									itemValue="#{rnk.renk_Adi}" />
+							</p:selectOneMenu>
+
+
+
+
+							<p:outputLabel value="Baslik :" />
+							<p:inputText value="#{ılanBean.ilanIslemleri.ilanduzenle.basklik}"
+								width="225px" />
+
+
+
+							<p:outputLabel for="kasa" value="Kasa: " />
+							<p:selectOneMenu id="kasa"
+								value="#{ılanBean.ilanIslemleri.kasa_Adi}" style="width:225px">
+								<f:selectItem itemLabel="Kasa Tipi Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.kasaIslemleri.listeKasa}"
+									var="ksa" itemLabel="#{ksa.kasaTipi}"
+									itemValue="#{ksa.kasaTipi}" />
+							</p:selectOneMenu>
+
+
+
+
+
+							<p:outputLabel value="Aciklama :" />
+							<p:inputTextarea value="#{ılanBean.ilanIslemleri.ilanduzenle.aciklama}"
+								style="width:220px" />
+
+
+
+
+
+							<p:outputLabel for="vites" value="Vites: " />
+							<p:selectOneMenu id="vites"
+								value="#{ılanBean.ilanIslemleri.vites_Adi}" style="width:225px">
+								<f:selectItem itemLabel="Vites Turu Seciniz" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{ılanBean.vitesIslemleri.listVites}"
+									var="vts" itemLabel="#{vts.vites_Turu}"
+									itemValue="#{vts.vites_Turu}" />
+							</p:selectOneMenu>
+
+							<p:columns var=""></p:columns>
+
+							
+							
+							
+							
+						
+							<p:commandButton action="#{ılanBean.ilanIslemleri.guncelle()}"
+								value="Güncelle" onclick="kayitYapildi()"
+								rendered="#{ılanBean.ilanIslemleri.ilanduzenle != null}" />
+
+
+
+
+						</h:panelGrid>
+
+						
+
+					</h:form>
+				
+				
+				<h:form id="frm" enctype="multipart/form-data">
+							<p:messages showDetail="true" />
+							<p:fileUpload value="#{ılanBean.resimIslemleri.uploadedFile}"
+								mode="simple" />
+							<p:commandButton value="Yükle" ajax="false"
+								actionListener="#{ılanBean.resimIslemleri.submit()}" />
+							<h:graphicImage library="images" name="#{ılanBean.resimIslemleri.resimGetir(ilan)}" width="250px" height="170px"/>
+
+						</h:form>
+				</div>
+			</f:view>
+
+
+
+		</ui:define>
+
+
+	</ui:composition>
+</body> 
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <managed-bean>
+  <managed-bean-name>kullaniciBean</managed-bean-name>
+  <managed-bean-class>com.epazarlama.otopazarlama.util.KullaniciBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>ılanBean</managed-bean-name>
+  <managed-bean-class>com.epazarlama.otopazarlama.util.IlanBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ <navigation-rule>
+  <from-view-id>/KayitOl-GirisYap.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>Kullanici</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
+   <redirect></redirect>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>Admin</from-outcome>
+   <to-view-id>/index.xhtml</to-view-id>
+   <redirect></redirect>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>Hatali</from-outcome>
+   <to-view-id>/KayitOl-GirisYap.xhtml</to-view-id>
+   <redirect></redirect>
+  </navigation-case>
+ </navigation-rule>
+
+</faces-config>

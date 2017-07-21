@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#KayitOl-GirisYap.xhtml"
+  PATH="/KayitOl-GirisYap.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#KayitOl-GirisYap.xhtml:0" NAME="item"
+   PATH="/KayitOl-GirisYap.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="Kullanici::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="Kullanici" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="Admin::#index.xhtml" NAME="output1"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="Admin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="Hatali::#KayitOl-GirisYap.xhtml"
+    NAME="output2" PATH="/KayitOl-GirisYap.xhtml"
+    TARGET="rules:#KayitOl-GirisYap.xhtml" TITLE="Hatali" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

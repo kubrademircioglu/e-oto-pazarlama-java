@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+
+<h:head></h:head> 
+<body> 
+
+
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+	<ui:define name="title"> Anasayfa </ui:define>
+<ui:define name="content">
+
+<f:view>
+
+<h:form>
+<div id="cerceve-icerik-ilan">
+
+
+<div id="ilan-ozellik">
+
+
+<h:outputText  value="İlan Adı:  " />
+<h:outputText value="#{ılanBean.ilanIslemleri.ilan.basklik}" />
+
+
+
+<h:panelGrid columns="2">
+
+Fiyat : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.ilan_Fiyati}" readonly="true" />
+İlan No : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.ilan_ID}" readonly="true" />
+İlan Tarihi : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.ilan_Tarihi}" readonly="true" />
+Marka : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.marka.marka_Adi}" readonly="true" />
+Seri : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.seri.seri_Adi}" readonly="true" />
+Model Yılı : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.model_Yili}" readonly="true" />
+Yakıt : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.yakit.yakit_Turu}" readonly="true" />
+Vites : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.vites.vites_Turu}" readonly="true" />
+Km : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.KM}" readonly="true" />
+Kasa Tipi : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.kasa.kasaTipi}" readonly="true" />
+Renk : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.renk.renk_Adi}" readonly="true" />
+Durumu : <p:inputText value="#{ılanBean.ilanIslemleri.ilan.durum}" readonly="true" />
+Durumu : <p:inputTextarea value="#{ılanBean.ilanIslemleri.ilan.aciklama}" readonly="true" />
+
+</h:panelGrid>
+
+</div>
+
+
+<div id="ilan-ozellik-2">
+
+
+
+
+
+	<p:galleria value="#{ılanBean.resimIslemleri.listResimler}" var="image" panelWidth="450" panelHeight="250" >
+
+    <h:graphicImage library="images" name="#{image.resim_Yolu}" width="450px" height="250px"/>
+</p:galleria>
+<br></br>
+<h:outputText  value="Satıcı Bilgileri  " />
+<br></br>
+<h:panelGrid columns="2">
+
+Ad Soyad: <h:outputText value="#{ılanBean.ilanIslemleri.ilan.kullanici.ad} #{ılanBean.ilanIslemleri.ilan.kullanici.soyad}" />
+
+Cep : <h:outputText value="#{ılanBean.ilanIslemleri.ilan.kullanici.telefon}"  />
+
+
+<p:outputLabel  value="Mesaj Icerigi :" />
+<p:inputTextarea  value="#{kullaniciBean.mesajislemleri.mesaj.mesajIcerik}"	style="width:350px; height=30px" />
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<p:commandButton action="#{kullaniciBean.mesajislemleri.mesajKaydet(ılanBean.ilanIslemleri.ilan.kullanici.kullanici_Adi,kullaniciBean.giris.kullaniciadi,kullaniciBean.mesajislemleri.mesaj.mesajIcerik)}" value="Mesaj Gonder"></p:commandButton>
+
+<br></br>
+</h:panelGrid>
+<br></br>
+</div>
+<br>
+</br>
+<br></br></div>
+</h:form>
+
+</f:view>
+
+
+</ui:define>
+
+
+</ui:composition>
+
+
+</body> 
+</html>

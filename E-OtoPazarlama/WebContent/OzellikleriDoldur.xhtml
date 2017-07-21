@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+
+<ui:composition template="/template/TemplateSayfasi.xhtml">
+	<ui:define name="title"> Anasayfa </ui:define>
+<ui:define name="content">
+
+	<f:view>
+	<div id="ilan">	
+
+	
+	
+		<h:form>
+		<p:outputLabel for="console" value="Araç Özellikleri Ekleyin" />
+	
+			<h:panelGrid columns="1" width="410px">
+
+
+				
+
+
+				<h:panelGrid columns="3">
+				Marka Adi : <p:inputText
+						value="#{ılanBean.markaIslemleri.marka.marka_Adi}" />
+					<p:commandButton action="#{ılanBean.markaIslemleri.kaydet()}"
+						value="Kaydet" />
+				</h:panelGrid>
+
+
+
+
+				<h:panelGrid columns="2">
+
+	
+				<p:outputLabel for="console" value="Marka Adi:" />
+        <p:selectOneMenu id="console" value="#{ılanBean.seriIslemleri.m_Adi}" style="width:125px">
+            <f:selectItems value="#{ılanBean.markaIslemleri.listMarka}" var = "cls" 
+            itemLabel="#{cls.marka_Adi}" itemValue="#{cls.marka_Adi}" />   
+        </p:selectOneMenu>
+        </h:panelGrid>
+        <h:panelGrid columns="3">
+Seri Adi : <p:inputText value="#{ılanBean.seriIslemleri.seri.seri_Adi}" />
+					<p:commandButton action="#{ılanBean.seriIslemleri.kaydet()}"
+						value="Kaydet" />
+
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="3">
+
+Renk Adi  <p:inputText value="#{ılanBean.renkIslemleri.renk.renk_Adi}" />
+					<p:commandButton action="#{ılanBean.renkIslemleri.kaydet()}"
+						value="Kaydet" />
+
+				</h:panelGrid>
+<h:panelGrid columns="3">
+
+Kasa Tipi   <p:inputText value="#{ılanBean.kasaIslemleri.kasa.kasaTipi}" />
+					<p:commandButton action="#{ılanBean.kasaIslemleri.kaydet()}"
+						value="Kaydet" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="3">
+
+Vites Turu : <p:inputText
+						value="#{ılanBean.vitesIslemleri.vites.vites_Turu}" />
+					<p:commandButton action="#{ılanBean.vitesIslemleri.kaydet()}"
+						value="Kaydet" />
+
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="3">
+
+Yakit Turu : <p:inputText
+						value="#{ılanBean.yakitIslemleri.yakit.yakit_Turu}" />
+					<p:commandButton action="#{ılanBean.yakitIslemleri.kaydet()}"
+						value="Kaydet" />
+
+				</h:panelGrid>
+
+
+			</h:panelGrid>
+		</h:form>
+ </div>   
+
+	</f:view>
+</ui:define>
+
+
+</ui:composition>
+</body>
+</html>
